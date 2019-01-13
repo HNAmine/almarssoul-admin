@@ -1,0 +1,7 @@
+{
+  "name": "issuesManager",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

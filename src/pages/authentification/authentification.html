@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar hideBackButton="false">
+    <ion-title text-center style="margin-top: 10px">
+      <ion-icon name="md-key"></ion-icon> AL MARSSOUL
+      <p style="font-size: 12px;color: black;font-weight: bold;">A plus tôt au lieux actuel</p>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div>
+        <img class="center" style="height: 150px" src="./assets/imgs/delivery.png">
+    </div>
+
+  <h1 style="text-align: center;color: white;font-weight: bold">AL MARSSOUL</h1>
+  <h5 style="text-align: center;color: white;font-weight: bold">(ADMIN - DELIVERY)</h5>
+
+  <div padding-top>
+
+      <div style="text-align: center">
+
+        <form #form="ngForm">
+            <ion-list no-lines padding-top>
+              <ion-item>
+                <ion-label floating style="color: black;font-weight: bold">Username</ion-label>
+                <ion-input
+                        type="text"
+                        [(ngModel)]="credential.login"
+                        name="username"
+                        minlength="4"
+                        maxlength="255"
+                        required>
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating style="color: black;font-weight: bold">Password</ion-label>
+                <ion-input
+                  type="password"
+                  [(ngModel)]="credential.password"
+                  name="password"
+                  minlength="4"
+                  maxlength="50"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+            <button ion-button block round color="secondary" (click)="signin()" [disabled]="!form.valid">
+              Login
+            </button>
+          </form>
+
+      </div>
+
+  </div>
+
+</ion-content>
