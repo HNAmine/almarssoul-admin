@@ -35,10 +35,7 @@ export class Dashboard {
   }
 
   ionViewDidLoad() {
-    this.storage.get(tokenIndex).then((token) => {
-      this.token = token;
       this.loadBasketToDelivery();
-    });
   }
 
   loadBasketToDelivery(){
@@ -47,7 +44,7 @@ export class Dashboard {
     });
     loader.present();
     this.loading = true;
-    this.basketService.getBasketToDelivery(this.token).subscribe(baskets => {
+    this.basketService.getBasketToDelivery().subscribe(baskets => {
       this.baskets = baskets;
       loader.dismiss();
       this.loading = false;

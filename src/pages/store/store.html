@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar no-border-bottom hideBackButton="true">
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title text-center>
+      Store
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+      <ion-searchbar
+          [(ngModel)]="search"
+          showCancelButton=true
+          (search)="onInput($event)"
+          cancelButtonText = "Cancel"
+          (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <h1 style="margin: 10px"><ion-icon name="md-arrow-dropright"></ion-icon> Store <ion-icon name="add-circle" (click)="addStore()" class="add-store"></ion-icon></h1>
+
+  <ion-list *ngFor="let store of stores">
+      <ion-item [ngClass]="{'disable-store':!store.enable}" (click)="updateStore(store)">
+        <ion-avatar item-start>
+          <img *ngIf="store.avatarUri" style="border-radius: 0px" [src]="store.avatarUri">
+        </ion-avatar>
+        <h2 style="font-weight: bold">{{store.label}}</h2>
+        <h3>{{store.description}}</h3>
+        <p>{{store.createdAt | date: 'MM/dd/yy'}}</p>
+      </ion-item>
+  </ion-list>
+
+</ion-content>

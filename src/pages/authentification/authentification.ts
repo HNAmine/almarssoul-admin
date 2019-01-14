@@ -39,6 +39,12 @@ export class Authentification {
       this.authentificationService.signin(this.credential).subscribe((token:Value<string>) => {
 
         if(this.authentificationService.isAdmin(token.value) || this.authentificationService.isDelivery(token.value)) {
+
+          this.authentificationService.token = token.value;
+
+          if(this.authentificationService.isAdmin(token.value)){
+            this.authentificationService.adminConnected = true;
+          }
          // set a key/value
          this.storage.set(tokenIndex, token.value);
          loader.dismiss();

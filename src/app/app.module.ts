@@ -24,6 +24,11 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { BasketDetailsPage } from '../pages/basket-details/basket-details';
 import { CallNumber } from '@ionic-native/call-number';
+import { StorePage } from '../pages/store/store';
+import { CategoryPage } from '../pages/category/category';
+import { StoreModal } from '../pages/store/store-modal';
+import { CategoryService } from '../providers/category.service';
+import { CategoryModal } from '../pages/category/category-modal';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,11 @@ import { CallNumber } from '@ionic-native/call-number';
     Home,
     Authentification,
     ProfilPage,
-    BasketDetailsPage
+    BasketDetailsPage,
+    StorePage,
+    CategoryPage,
+    StoreModal,
+    CategoryModal
   ],
   imports: [BrowserModule, HttpClientModule,FormsModule,IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()],
@@ -43,7 +52,11 @@ import { CallNumber } from '@ionic-native/call-number';
     Authentification,
     ProfilPage,
     Dashboard,
-    BasketDetailsPage
+    BasketDetailsPage,
+    StorePage,
+    CategoryPage,
+    StoreModal,
+    CategoryModal
   ],
   providers: [
     StatusBar,
@@ -56,9 +69,11 @@ import { CallNumber } from '@ionic-native/call-number';
     SMS,
     Geolocation,
     ProductService,
+    CategoryService,
     SocialSharing,
     LaunchNavigator,
     CallNumber,
+    CategoryModal,
     {
       provide: ErrorHandler,
       useClass: ErrorsHandler

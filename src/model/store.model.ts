@@ -1,8 +1,8 @@
 import { Category } from "./category.model";
 
 export class Store {
-    id: number;
-    label: string;
+    id?: number;
+    label?: string;
     description?: string;
     avatarUri?:string;
     enable?: boolean;

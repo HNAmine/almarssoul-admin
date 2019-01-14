@@ -10,6 +10,8 @@ import { Storage } from '@ionic/storage';
 import { tokenIndex } from '../../app/config';
 import { AuthentificationService } from '../../providers/authentification.service';
 import { User } from '../../model/authentification.model';
+import { StorePage } from '../store/store';
+import { CategoryPage } from '../category/category';
 
 /**
  * Generated class for the Dashboard page.
@@ -43,10 +45,17 @@ export class Home {
   ) {
     this.initializeApp();
     // set our app's pages
+
     this.pages = [
-      { title: "Home", icon: "home", component: Dashboard },
-      { title: "Profile", icon: "md-person", component: ProfilPage }
+      { title: "Home", icon: "home", component: Dashboard }
     ];
+
+    if(this.authentificationService.adminConnected) {
+       this.pages.push( { title: "Store", icon: "archive", component: StorePage },
+          { title: "Category", icon: "md-cube", component: CategoryPage },
+          { title: "Profile", icon: "md-person", component: ProfilPage });
+    }
+
   }
 
   ionViewDidLoad() {

@@ -6,8 +6,8 @@ import { Store } from '../model/store.model';
 import { AuthentificationService } from './authentification.service';
 
 @Injectable()
-export class StoreService {
-  private dns = dns + 'stores/';
+export class CategoryService {
+  private dns = dns + 'categories/';
 
   constructor(private _http: HttpClient, private authentificationService: AuthentificationService) {}
 
@@ -18,7 +18,7 @@ export class StoreService {
 	 *
 	 * --------------------------------------------------------------
 	 **/
-  public addStore(store: Store): Observable<any> {
+  public addCategory(store: Store): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
     return this._http.post(this.dns, store, {headers});
@@ -30,7 +30,7 @@ export class StoreService {
 	 *
 	 * --------------------------------------------------------------
 	 **/
-  public updateStore(store: Store): Observable<any> {
+  public updateCategory(store: Store): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
     return this._http.put(this.dns, store, {headers});
@@ -42,7 +42,7 @@ export class StoreService {
 	 *
 	 * --------------------------------------------------------------
 	 **/
-  public getStores(search): Observable<any> {
+  public getCategories(search): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
     return this._http.get(this.dns + 'list?search='+search, {

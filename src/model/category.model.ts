@@ -1,11 +1,13 @@
 import { Product } from "./product.model";
 
 export class Category {
-  id: number;
-  label: string;
+  id?: number;
+  label?: string;
   description?: string;
   avatarUri?:string;
-  products:Product[];
+  createdAt?: Date;
+  storeLabel?:string;
+  products?:Product[];
   constructor(
     id: number,
     label: string,

@@ -1,0 +1,80 @@
+page-store {
+  ion-slides {
+    max-height: 23%;
+  }
+}
+
+.bold {
+  color: black !important;
+}
+
+.segment-activated {
+  color: black !important;
+  border: 1px solid black !important;
+  font-weight: bold !important;
+}
+
+.image_block {
+  width: 175px;
+  height: 175px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.image_block a img {
+position: absolute;
+bottom: 0;
+}
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: black;
+  }
+
+  .card-subtitle {
+    font-size: 1.4em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: black;
+  }
+
+  .card-badge {
+    font-size: 1em;
+    position: absolute;
+    top: 68%;
+    width: 100%;
+    color: black;
+  }
+
+}
+
+.call {
+  float: right;
+  padding: 012px;
+  color: white;
+  background-color: green;
+  border-radius: 10px;
+}
+
+.disable-store{
+  opacity: 0.5
+}
+
+.add-store{
+  color: green;
+  float: right;
+  size: 12px;
+  font-size: 42px;
+}

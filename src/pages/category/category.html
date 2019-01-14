@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar no-border-bottom hideBackButton="true">
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title text-center>
+      Category
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+      <ion-searchbar
+          [(ngModel)]="search"
+          showCancelButton=true
+          (search)="onInput($event)"
+          cancelButtonText = "Cancel"
+          (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <h1 style="margin: 10px"><ion-icon name="md-arrow-dropright"></ion-icon> Category <ion-icon name="add-circle" (click)="addCategory()" class="add-store"></ion-icon></h1>
+
+    <ion-list *ngFor="let category of categories">
+        <ion-item (click)="updateCategory(category)">
+          <h2 style="font-weight: bold">{{category.label}} ( <ion-icon name="archive"></ion-icon> {{category.storeLabel}})</h2>
+          <h3>{{category.description}}</h3>
+          <p>{{category.createdAt | date: 'MM/dd/yy'}}</p>
+        </ion-item>
+    </ion-list>
+  </ion-content>
