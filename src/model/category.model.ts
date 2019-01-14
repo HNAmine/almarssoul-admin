@@ -8,6 +8,7 @@ export class Category {
   createdAt?: Date;
   storeLabel?:string;
   products?:Product[];
+  storeId?: number;
   constructor(
     id: number,
     label: string,

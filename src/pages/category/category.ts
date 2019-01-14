@@ -36,11 +36,11 @@ export class CategoryPage {
   addCategory() {
     let categoryModal = this.modalCtrl.create(CategoryModal, { mode: Action.ADD });
     categoryModal.present();
-    // storeModal.onDidDismiss(data => {
-    //   if(data.store && data.mode === Action.ADD){
-    //     this.stores.push(data.store);
-    //   }
-    // });
+    categoryModal.onDidDismiss(data => {
+      if(data.category && data.mode === Action.ADD){
+        this.categories.push(data.category);
+      }
+    });
   }
 
   updateCategory(category: Category){

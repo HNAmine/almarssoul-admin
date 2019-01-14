@@ -14,7 +14,7 @@ export class CategoryService {
   /**
 	 * --------------------------------------------------------------
 	 *
-	 * GET CALLS
+	 * POST CALLS
 	 *
 	 * --------------------------------------------------------------
 	 **/
@@ -38,10 +38,11 @@ export class CategoryService {
   /**
 	 * --------------------------------------------------------------
 	 *
-	 * POST CALLS
+	 * GET CALLS
 	 *
 	 * --------------------------------------------------------------
 	 **/
+  
   public getCategories(search): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);

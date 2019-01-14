@@ -18,27 +18,25 @@
     </ion-toolbar>
   </ion-header>
 <ion-content>
-
-      <!-- <form #form="ngForm">
+       <form #form="ngForm">
           <ion-list no-lines padding-top>
-      
               <ion-item>
                   <ion-label floating style="color: black;font-weight: bold">Label <span class="required">(*)</span></ion-label>
                   <ion-input
                     type="text"
-                    [(ngModel)]="store.label"
+                    [(ngModel)]="category.label"
                     name="label"
                     minlength="2"
                     maxlength="255"
                     required>
                   </ion-input>  
               </ion-item>
-      
+
               <ion-item>
                   <ion-label floating style="color: black;font-weight: bold">Description</ion-label>
                   <ion-input
                     type="text"
-                    [(ngModel)]="store.description"
+                    [(ngModel)]="category.description"
                     name="description"
                     minlength="4"
                     maxlength="50">
@@ -46,32 +44,21 @@
               </ion-item>
 
               <ion-item>
-                  <ion-label>Enable</ion-label>
-                  <ion-checkbox [(ngModel)]="store.enable" name="enable"></ion-checkbox>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label>Type</ion-label>
-                  <ion-select [(ngModel)]="store.type" name="type" required>
-                    <ion-option value="DEFAULT">DEFAULT</ion-option>
-                    <ion-option value="RESTAURANT">RESTAURANT</ion-option>
-                    <ion-option value="BUTCHERS">BUTCHERS</ion-option>
+                  <ion-label>Store</ion-label>
+                  <ion-select [(ngModel)]="category.storeId" name="storeId" required>
+                    <ion-option *ngFor="let store of stores" [value]="store.id">{{store.label}}</ion-option>
                   </ion-select>
                 </ion-item>
           </ion-list>
-      
-          <button ion-button block round color="secondary" [disabled]="!form.valid" (click)="submit()">
 
+          <button ion-button block round color="secondary" [disabled]="!form.valid" (click)="submit()">
             <ng-container *ngIf="mode === 'UPDATE'">
                 Save
             </ng-container>
-
             <ng-container *ngIf="mode === 'ADD'">
                 Add
             </ng-container>
-
           </button>
 
-        </form> -->
-
+        </form> 
   </ion-content>
