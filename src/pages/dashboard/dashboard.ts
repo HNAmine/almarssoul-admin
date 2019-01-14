@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
 import { LoadingController, NavController, NavParams } from "ionic-angular";
 
-import { tokenIndex } from '../../app/config';
-import { Storage } from '@ionic/storage';
 import { BasketService } from "../../providers/basket.service";
 import { BasketDetails } from "../../model/product.model";
 import { LaunchNavigator, LaunchNavigatorOptions } from "@ionic-native/launch-navigator";
@@ -27,7 +25,6 @@ export class Dashboard {
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
-    private storage: Storage,
     private basketService:BasketService,
     private launchNavigator: LaunchNavigator,
     private callNumber: CallNumber
