@@ -8,7 +8,7 @@
 
 <ion-content class="card-background-page">
 
-  <ion-card *ngFor="let basket of baskets">
+  <ion-card *ngFor="let basket of baskets" [ngClass]="{'inprogress':basket.state == 'INPROGRESS'}">
 
     <ion-item>
       <ion-avatar item-start>

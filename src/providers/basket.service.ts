@@ -27,4 +27,18 @@ export class BasketService {
     });
   }
 
+  /**
+	 * --------------------------------------------------------------
+	 *
+	 * PUT CALLS
+	 *
+	 * --------------------------------------------------------------
+	 **/
+  public editState(basketId, state): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
+    return this._http.put(this.dns + basketId +'/state/' + state, null, {
+      headers
+    });
+  }
 }

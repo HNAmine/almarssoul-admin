@@ -3,6 +3,9 @@ import { LoadingController, NavController, NavParams, AlertController } from "io
 import { BasketDetails } from "../../model/product.model";
 import { LaunchNavigator, LaunchNavigatorOptions } from "@ionic-native/launch-navigator";
 import { CallNumber } from "@ionic-native/call-number";
+import { BasketService } from "../../providers/basket.service";
+import { Dashboard } from "../dashboard/dashboard";
+import { AuthentificationService } from "../../providers/authentification.service";
 
 /**
  * Generated class for the Dashboard page.
@@ -21,8 +24,10 @@ export class BasketDetailsPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     private launchNavigator: LaunchNavigator,
+    private basketService:BasketService,
     private alertCtrl: AlertController,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    public authentificationService: AuthentificationService
   ) {
     this.basket = navParams.get("data");
   }
@@ -43,7 +48,7 @@ export class BasketDetailsPage {
   );
   }
 
-  confirmChangeState(){
+  confirmChangeState(state){
     let alert = this.alertCtrl.create({
       title: 'Are you sure ?',
       subTitle: 'Are you sure to change the state ?',
@@ -58,7 +63,7 @@ export class BasketDetailsPage {
         {
           text: 'Agree',
           handler: () => {
-            console.log('Buy clicked');
+            this.editState(state);
           }
         }
       ]
@@ -70,5 +75,22 @@ export class BasketDetailsPage {
     this.callNumber.callNumber(phone, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
+  }
+
+  editState(state){
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    this.basketService.editState(this.basket.id, state).subscribe(()=> {
+      loader.dismiss();
+      if(state == 'INPROGRESS') {
+        this.basket.state = state;
+      } else {
+        this.navCtrl.push(Dashboard);
+      }
+    }, ()=> {
+      loader.dismiss();
+    })
   }
 }

@@ -32,24 +32,24 @@
     <br>
     <ion-row>
       <ion-col *ngIf="basket.state !== 'INPROGRESS'">
-        <button (click)="confirmChangeState()" ion-button icon-start clear small style="background-color: #00abec;color: white">
+        <button (click)="confirmChangeState('INPROGRESS')" ion-button icon-start clear small style="background-color: #00abec;color: white">
           <div>In progress</div>
         </button>
       </ion-col>
       <ion-col>
-        <button (click)="confirmChangeState()" ion-button icon-start clear small style="background-color: green;color: white">
+        <button (click)="confirmChangeState('COMPLETED')" ion-button icon-start clear small style="background-color: green;color: white">
           <div>Completed</div>
         </button>
       </ion-col>
-      <ion-col>
-        <button (click)="confirmChangeState()" ion-button icon-start clear small style="background-color: brown;color: white">
-          <div>Cancelled</div>
+      <ion-col *ngIf="authentificationService.adminConnected">
+        <button (click)="confirmChangeState('CANCELLED')" ion-button icon-start clear small style="background-color: brown;color: white">
+          <div>Concelled</div>
         </button>
       </ion-col>
+
+      
     </ion-row> 
   
-
-
     <ion-list>
         <ion-item *ngFor="let product of basket.products">
           <ion-avatar item-start>
