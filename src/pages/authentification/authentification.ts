@@ -41,7 +41,7 @@ export class Authentification {
         if(this.authentificationService.isAdmin(token.value) || this.authentificationService.isDelivery(token.value)) {
 
           this.authentificationService.token = token.value;
-
+          this.authentificationService.adminConnected = false;
           if(this.authentificationService.isAdmin(token.value)){
             this.authentificationService.adminConnected = true;
           }
