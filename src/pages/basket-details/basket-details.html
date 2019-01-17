@@ -19,6 +19,15 @@
       <p>{{basket?.phone}}</p>
     </ion-item>
     
+    <ion-item *ngIf="basket.deliveryFirstName && authentificationService.adminConnected" style="background: gainsboro;">
+      <ion-avatar item-start>
+          <ion-icon name="ios-more"></ion-icon>
+      </ion-avatar>
+      <h2 style="font-weight: bold">{{basket?.deliveryFirstName}} {{basket?.deliveryLastName}} <ion-icon *ngIf="basket.deliveryPhone" name="md-call" class="call" (click)="callOwner(basket.deliveryPhone)"></ion-icon>
+      </h2>
+      <p>{{basket?.deliveryPhone}}</p>
+    </ion-item>
+  
     <ion-card-content>
 
       <h4 style="font-weight: bold"><ion-icon name="pin"></ion-icon> Closest positions</h4>
@@ -30,6 +39,7 @@
     </ion-card-content>
     <br>
     <br>
+
     <ion-row>
       <ion-col *ngIf="basket.state !== 'INPROGRESS'">
         <button (click)="confirmChangeState('INPROGRESS')" ion-button icon-start clear small style="background-color: #00abec;color: white">
@@ -46,10 +56,16 @@
           <div>Concelled</div>
         </button>
       </ion-col>
-
-      
     </ion-row> 
   
+    <ion-row *ngIf="authentificationService.adminConnected">
+      <ion-col>
+        <button ion-button icon-start clear small style="background-color: orangered;color: white">
+          <div>Assign delivery</div>
+        </button>
+      </ion-col>
+    </ion-row> 
+
     <ion-list>
         <ion-item *ngFor="let product of basket.products">
           <ion-avatar item-start>

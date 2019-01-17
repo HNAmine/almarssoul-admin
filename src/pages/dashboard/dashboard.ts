@@ -6,6 +6,7 @@ import { BasketDetails } from "../../model/product.model";
 import { LaunchNavigator, LaunchNavigatorOptions } from "@ionic-native/launch-navigator";
 import { BasketDetailsPage } from "../basket-details/basket-details";
 import { CallNumber } from '@ionic-native/call-number';
+import { AuthentificationService } from "../../providers/authentification.service";
 
 /**
  * Generated class for the Dashboard page.
@@ -27,7 +28,8 @@ export class Dashboard {
     public loadingCtrl: LoadingController,
     private basketService:BasketService,
     private launchNavigator: LaunchNavigator,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    public authentificationService: AuthentificationService
   ) {
   }
 
