@@ -91,4 +91,12 @@ export class AuthentificationService {
     headers = headers.append('Authorization', tokenPrefix + tokenHash);
     return this._http.put(this.dns + 'update/user-info', user, {headers});
   }
+
+  public getAllDelivery(): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.token);
+    return this._http.get(this.dns + 'delivery', {
+      headers
+    });
+  }
 }

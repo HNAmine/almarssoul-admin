@@ -60,7 +60,7 @@
   
     <ion-row *ngIf="authentificationService.adminConnected">
       <ion-col>
-        <button ion-button icon-start clear small style="background-color: orangered;color: white">
+        <button (click)="assignDelivery()" ion-button icon-start clear small style="background-color: orangered;color: white">
           <div>Assign delivery</div>
         </button>
       </ion-col>

@@ -19,6 +19,7 @@ import { AuthentificationService } from "../../providers/authentification.servic
 })
 export class BasketDetailsPage {
   basket:BasketDetails = {closestPositions: []};
+  delivery = [];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -91,6 +92,77 @@ export class BasketDetailsPage {
       }
     }, ()=> {
       loader.dismiss();
+    })
+  }
+
+  assignDelivery(){
+
+    let alertOptions = {
+      title: 'Specify delivey',
+      inputs: [],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'OK',
+          handler: (deliveryId) => {
+            this.assignBasketToDelivey(deliveryId);
+          }
+        }
+      ]
+    };
+    if(this.delivery && this.delivery.length == 0){
+      let loader = this.loadingCtrl.create({
+        content: "Please wait..."
+      });
+      loader.present();
+      this.authentificationService.getAllDelivery().subscribe((delivery: any[]) => {
+        loader.dismiss();
+        this.delivery = delivery;
+  
+        delivery.forEach(d => {
+          alertOptions.inputs.push({
+            type: 'radio',
+            label: d.label,
+            value: d.id
+          });
+        });
+  
+        let alert = this.alertCtrl.create(alertOptions);
+        alert.present();
+      }, ()=> {
+        loader.dismiss();
+      });
+    }else {
+      this.delivery.forEach(d => {
+        alertOptions.inputs.push({
+          type: 'radio',
+          label: d.label,
+          value: d.id
+        });
+      });
+
+      let alert = this.alertCtrl.create(alertOptions);
+      alert.present();
+    }
+
+  }
+
+  assignBasketToDelivey(deliveryId){
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    this.basketService.assignBasketToDelivey(this.basket.id,deliveryId).subscribe(()=> {
+      loader.dismiss();
+      this.navCtrl.push(Dashboard);
+    }, (err)=> {
+      loader.dismiss();
+      throw err;
     })
   }
 }

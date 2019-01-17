@@ -41,4 +41,12 @@ export class BasketService {
       headers
     });
   }
+
+  public assignBasketToDelivey(basketId, deliveryId): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
+    return this._http.put(this.dns + basketId +'/assign/' + deliveryId, null, {
+      headers
+    });
+  }
 }
