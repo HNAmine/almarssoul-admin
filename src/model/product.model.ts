@@ -1,4 +1,5 @@
 import { BasketState } from "./basket.model";
+import { Label } from "ionic-angular";
 
 export class Product {
   id?: number;
@@ -9,6 +10,8 @@ export class Product {
   expiredAt?:Date;
   canbeExpired?:boolean;
   enable?:boolean;
+  categoryLabel?:Label;
+  categoryId?: number;
 }
 
 export class Assignment {

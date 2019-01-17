@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <ng-container *ngIf="mode === 'ADD'">
+            Add product
+        </ng-container>
+
+        <ng-container *ngIf="mode === 'UPDATE'">
+            Edi product
+        </ng-container>
+
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+            Cancel
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+       <form #form="ngForm">
+          <ion-list no-lines padding-top>
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Label <span class="required">(*)</span></ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="product.label"
+                    name="label"
+                    minlength="2"
+                    maxlength="255"
+                    required>
+                  </ion-input>  
+              </ion-item>
+
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Description</ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="product.description"
+                    name="description"
+                    minlength="4"
+                    maxlength="50">
+                  </ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label>Category</ion-label>
+                  <ion-select [(ngModel)]="product.categoryId" name="storeId" required>
+                    <ion-option *ngFor="let category of categories" [value]="category.id">{{category.label}}</ion-option>
+                  </ion-select>
+                </ion-item>
+          </ion-list>
+
+          <button ion-button block round color="secondary" [disabled]="!form.valid" (click)="submit()">
+            <ng-container *ngIf="mode === 'UPDATE'">
+                Save
+            </ng-container>
+            <ng-container *ngIf="mode === 'ADD'">
+                Add
+            </ng-container>
+          </button>
+
+        </form>
+  </ion-content>

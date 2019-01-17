@@ -44,7 +44,18 @@ export class CategoryPage {
   }
 
   updateCategory(category: Category){
-
+    let categoryModal = this.modalCtrl.create(CategoryModal, { mode: Action.UPDATE , category });
+    categoryModal.present();
+    categoryModal.onDidDismiss(data => {
+      if(data.category && data.mode === Action.UPDATE){
+        for(let i = 0; i< this.categories.length;i++){
+          if(this.categories[i].id === data.category.id){
+            this.categories[i] = data.category;
+            break;
+          }
+        }
+      }
+    });
   }
 
   loadCategories() {

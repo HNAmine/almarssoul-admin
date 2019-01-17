@@ -1,31 +1,30 @@
 import { NavParams, ViewController, LoadingController, ToastController, NavController } from "ionic-angular";
 import { Component } from "@angular/core";
-import { Action } from "../../model/product.model";
-import { Category } from "../../model/category.model";
+import { Action, Product } from "../../model/product.model";
 import { CategoryService } from "../../providers/category.service";
-import { StoreService } from "../../providers/store.service";
+import { ProductService } from "../../providers/product.service";
 
 @Component({
-    selector: 'category-modal',
-    templateUrl: "category-modal.html"
+    selector: 'product-modal',
+    templateUrl: "product-modal.html"
   })
-  export class CategoryModal {
+  export class ProductModal {
   
    mode = "ADD";
   
-   category: Category = {};
+   product: Product = {};
 
-   stores: {id :number, label: string}[] = [];
+   categories: {id :number, label: string}[] = [];
   
    constructor( navParams: NavParams, public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController, public navCtrl: NavController,
-    private categoryService: CategoryService, private storeService: StoreService) {
+    private categoryService: CategoryService, private productService: ProductService) {
       this.mode = navParams.get("mode");
       if(this.mode === Action.UPDATE) {
-          this.category = navParams.get("category");
+          this.product = navParams.get("product");
       }
-      this.loadStores();
+      this.loadCategories();
    }
   
    dismiss() {
@@ -39,14 +38,14 @@ import { StoreService } from "../../providers/store.service";
     loader.present();
 
     if(this.mode === Action.ADD){
-      this.categoryService.addCategory(this.category).subscribe(category => {
+      this.productService.addProduct(this.product).subscribe(product => {
         loader.dismiss();
         const toast = this.toastCtrl.create({
-          message: 'Category was added successfully',
+          message: 'Product was added successfully',
           duration: 3000
         });
         toast.present();
-        this.viewCtrl.dismiss({category, mode: this.mode});
+        this.viewCtrl.dismiss({product, mode: this.mode});
       }, (err)=> {
         this.viewCtrl.dismiss();
         throw err;
@@ -54,14 +53,14 @@ import { StoreService } from "../../providers/store.service";
     }
 
     if(this.mode === Action.UPDATE){
-      this.categoryService.updateCategory(this.category).subscribe(category => {
+      this.productService.updateProduct(this.product).subscribe(product => {
         loader.dismiss();
         const toast = this.toastCtrl.create({
-          message: 'Category was updated successfully',
+          message: 'Product was updated successfully',
           duration: 3000
         });
         toast.present();
-        this.viewCtrl.dismiss({category, mode: this.mode});
+        this.viewCtrl.dismiss({product, mode: this.mode});
       }, (err)=> {
         this.viewCtrl.dismiss();
         throw err;
@@ -69,14 +68,14 @@ import { StoreService } from "../../providers/store.service";
     }
   }
 
-  loadStores(){
+  loadCategories(){
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
     loader.present();
-    this.stores = [];
-    this.storeService.getStoreOptions().subscribe(stores => {
-      this.stores = stores;
+    this.categories = [];
+    this.categoryService.getCategoryOptions().subscribe(categories => {
+      this.categories = categories;
       loader.dismiss();
     }, (err) => {
       loader.dismiss();

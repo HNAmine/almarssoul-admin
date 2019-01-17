@@ -51,4 +51,12 @@ export class CategoryService {
     });
   }
 
+  
+  public getCategoryOptions(): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.authentificationService.token);
+    return this._http.get(this.dns + 'options', {
+      headers
+    });
+  }
 }

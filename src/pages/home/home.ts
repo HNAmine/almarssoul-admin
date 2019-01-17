@@ -12,6 +12,7 @@ import { AuthentificationService } from '../../providers/authentification.servic
 import { User } from '../../model/authentification.model';
 import { StorePage } from '../store/store';
 import { CategoryPage } from '../category/category';
+import { ProductPage } from '../product/product';
 
 /**
  * Generated class for the Dashboard page.
@@ -52,8 +53,9 @@ export class Home {
 
     if(this.authentificationService.adminConnected) {
        this.pages.push( { title: "Store", icon: "archive", component: StorePage },
-          { title: "Category", icon: "md-cube", component: CategoryPage },
-          { title: "Profile", icon: "md-person", component: ProfilPage });
+       { title: "Category", icon: "md-cube", component: CategoryPage },
+       { title: "Product", icon: "md-albums", component: ProductPage },
+       { title: "Profile", icon: "md-person", component: ProfilPage });
     }
 
   }

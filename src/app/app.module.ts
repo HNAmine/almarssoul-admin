@@ -29,6 +29,8 @@ import { CategoryPage } from '../pages/category/category';
 import { StoreModal } from '../pages/store/store-modal';
 import { CategoryService } from '../providers/category.service';
 import { CategoryModal } from '../pages/category/category-modal';
+import { ProductPage } from '../pages/product/product';
+import { ProductModal } from '../pages/product/product-modal';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { CategoryModal } from '../pages/category/category-modal';
     StorePage,
     CategoryPage,
     StoreModal,
-    CategoryModal
+    CategoryModal,
+    ProductPage,
+    ProductModal
   ],
   imports: [BrowserModule, HttpClientModule,FormsModule,IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()],
@@ -56,7 +60,9 @@ import { CategoryModal } from '../pages/category/category-modal';
     StorePage,
     CategoryPage,
     StoreModal,
-    CategoryModal
+    CategoryModal,
+    ProductPage,
+    ProductModal
   ],
   providers: [
     StatusBar,
