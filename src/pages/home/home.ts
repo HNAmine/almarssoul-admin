@@ -13,6 +13,7 @@ import { User } from '../../model/authentification.model';
 import { StorePage } from '../store/store';
 import { CategoryPage } from '../category/category';
 import { ProductPage } from '../product/product';
+import { DeliveryPage } from '../delivery/delivery';
 
 /**
  * Generated class for the Dashboard page.
@@ -48,16 +49,17 @@ export class Home {
     // set our app's pages
 
     this.pages = [
-      { title: "Home", icon: "home", component: Dashboard }
+      { title: "Home", icon: "home", component: Dashboard },
+      { title: "Profile", icon: "md-person", component: ProfilPage}
     ];
 
     if(this.authentificationService.adminConnected) {
        this.pages.push( { title: "Store", icon: "archive", component: StorePage },
        { title: "Category", icon: "md-cube", component: CategoryPage },
        { title: "Product", icon: "md-albums", component: ProductPage },
-       { title: "Profile", icon: "md-person", component: ProfilPage });
+       { title: "Delivery", icon: "ios-people", component: DeliveryPage });
     }
-
+    
   }
 
   ionViewDidLoad() {

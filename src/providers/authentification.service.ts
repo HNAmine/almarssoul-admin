@@ -36,6 +36,14 @@ export class AuthentificationService {
       });
   }
 
+  public addDelivery(user: User): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.token);
+    return this._http.post(this.dns + 'delivery/add', user, {
+      headers
+    });
+  }
+
   public acceptInvitation(invited: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post(this.dns + 'accept-invitation', invited, {
@@ -96,6 +104,14 @@ export class AuthentificationService {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     headers = headers.append('Authorization', tokenPrefix + this.token);
     return this._http.get(this.dns + 'delivery', {
+      headers
+    });
+  }
+
+  public getAllDeliveryList(): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.token);
+    return this._http.get(this.dns + 'delivery/list', {
       headers
     });
   }

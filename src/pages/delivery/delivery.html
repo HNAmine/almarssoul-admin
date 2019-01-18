@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar no-border-bottom hideBackButton="true">
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title text-center>
+      Product
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <h1 style="margin: 10px"><ion-icon name="md-arrow-dropright"></ion-icon> Delivery <ion-icon name="add-circle" (click)="addDelivery()" class="add-store"></ion-icon></h1>
+
+    <ion-list *ngFor="let delivery of deliveries">
+        <ion-item (click)="updateDelivery(delivery)">
+          <ion-avatar item-start>
+                <img *ngIf="delivery.avatar" [src]="delivery.avatar">
+                <img *ngIf="!delivery.avatar" src="https://cdn5.vectorstock.com/i/thumbs/76/54/postmanmail-and-postman-single-icon-in-black-vector-14677654.jpg">
+            </ion-avatar>
+
+          
+          <h2 style="font-weight: bold">{{delivery.firstName}}  {{delivery.lastName}} </h2>
+          <h3>{{delivery.phone}}</h3>
+          <h3>{{delivery.rawPassword}}</h3>
+          <p>{{delivery.email}}</p>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

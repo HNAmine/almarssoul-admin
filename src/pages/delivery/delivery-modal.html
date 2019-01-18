@@ -1,0 +1,91 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <ng-container *ngIf="mode === 'ADD'">
+            Add delivery
+        </ng-container>
+
+        <ng-container *ngIf="mode === 'UPDATE'">
+            Edi delivery
+        </ng-container>
+
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+            Cancel
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+       <form #form="ngForm">
+          <ion-list no-lines padding-top>
+
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Phone <span class="required">(*)</span></ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="delivery.phone"
+                    name="phone"
+                    minlength="10"
+                    maxlength="30"
+                    required>
+                  </ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">First name <span class="required">(*)</span></ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="delivery.firstName"
+                    name="firstName"
+                    minlength="4"
+                    maxlength="50"
+                    required>
+                  </ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Last name</ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="delivery.lastName"
+                    name="lastName"
+                    minlength="4"
+                    maxlength="50">
+                  </ion-input>
+              </ion-item>
+    
+              <ion-item>
+                <ion-label floating style="color: black;font-weight: bold">Password <span class="required">(*)</span></ion-label>
+                <ion-input
+                  type="password"
+                  [(ngModel)]="delivery.password"
+                  name="password"
+                  minlength="4"
+                  maxlength="50"
+                  required></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Email</ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="delivery.email"
+                    name="email">
+                  </ion-input>
+              </ion-item>
+
+          </ion-list>
+
+          <button ion-button block round color="secondary" [disabled]="!form.valid" (click)="submit()">
+            <!-- <ng-container *ngIf="mode === 'UPDATE'">
+                Save
+            </ng-container> -->
+            <ng-container *ngIf="mode === 'ADD'">
+                Add
+            </ng-container>
+          </button>
+
+        </form>
+  </ion-content>
