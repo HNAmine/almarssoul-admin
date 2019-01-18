@@ -44,6 +44,18 @@
               </ion-item>
 
               <ion-item>
+                <ion-label floating style="color: black;font-weight: bold">Cost</ion-label>
+                <ion-input
+                  type="number"
+                  [(ngModel)]="product.cost"
+                  name="cost"
+                  min="1"
+                  required
+                  >
+                </ion-input>
+            </ion-item>
+
+              <ion-item>
                   <ion-label>Category</ion-label>
                   <ion-select [(ngModel)]="product.categoryId" name="storeId" required>
                     <ion-option *ngFor="let category of categories" [value]="category.id">{{category.label}}</ion-option>

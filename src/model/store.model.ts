@@ -6,6 +6,7 @@ export class Store {
     description?: string;
     avatarUri?:string;
     enable?: boolean;
+    code?: string;
     type?: 'DEFAULT' | 'RESTAURANT'| 'BUTCHERS';
     categories?: Category[];
     constructor(

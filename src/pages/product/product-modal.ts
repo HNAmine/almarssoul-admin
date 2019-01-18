@@ -48,6 +48,7 @@ import { ProductService } from "../../providers/product.service";
         this.viewCtrl.dismiss({product, mode: this.mode});
       }, (err)=> {
         this.viewCtrl.dismiss();
+        loader.dismiss();
         throw err;
       });
     }
@@ -62,6 +63,7 @@ import { ProductService } from "../../providers/product.service";
         toast.present();
         this.viewCtrl.dismiss({product, mode: this.mode});
       }, (err)=> {
+        loader.dismiss();
         this.viewCtrl.dismiss();
         throw err;
       });

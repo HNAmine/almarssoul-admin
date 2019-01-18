@@ -26,6 +26,7 @@ export interface User {
   firstName?: string;
   lastName?: string;
   rawPassword?: string;
+  code?: string;
   password?: string;
   repassword?: string;
   phone?: string;
