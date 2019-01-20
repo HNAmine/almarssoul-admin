@@ -36,7 +36,7 @@ export class DeliveryPage {
     let deliveryModal = this.modalCtrl.create(DeliveryModal, { mode: Action.ADD });
     deliveryModal.present();
     deliveryModal.onDidDismiss(data => {
-      if(data.delivery && data.mode === Action.ADD){
+      if(data && data.delivery && data.mode === Action.ADD){
         this.deliveries.push(data.delivery);
       }
     });

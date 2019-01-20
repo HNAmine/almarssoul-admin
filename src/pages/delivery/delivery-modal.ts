@@ -44,7 +44,8 @@ import { AuthentificationService } from "../../providers/authentification.servic
         toast.present();
         this.viewCtrl.dismiss({delivery, mode: this.mode});
       }, (err)=> {
-        this.viewCtrl.dismiss();
+        loader.dismiss();
+        // this.viewCtrl.dismiss();
         throw err;
       });
     }
