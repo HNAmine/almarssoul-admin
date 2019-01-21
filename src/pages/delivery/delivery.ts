@@ -43,8 +43,8 @@ export class DeliveryPage {
   }
 
   updateDelivery(delivery: User){
-    // let productModal = this.modalCtrl.create(ProductModal, { mode: Action.UPDATE , product });
-    // productModal.present();
+    let productModal = this.modalCtrl.create(DeliveryModal, { mode: Action.UPDATE , delivery });
+    productModal.present();
     // productModal.onDidDismiss(data => {
     //   if(data.product && data.mode === Action.UPDATE){
     //     for(let i = 0; i< this.products.length;i++){

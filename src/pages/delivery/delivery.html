@@ -12,10 +12,11 @@
 
     <ion-list *ngFor="let delivery of deliveries">
         <ion-item (click)="updateDelivery(delivery)">
+
           <ion-avatar item-start>
-                <img *ngIf="delivery.avatar" [src]="delivery.avatar">
-                <img *ngIf="!delivery.avatar" src="https://cdn5.vectorstock.com/i/thumbs/76/54/postmanmail-and-postman-single-icon-in-black-vector-14677654.jpg">
-            </ion-avatar>
+                <img style="border-radius: 0px;width: 100px;height: 100px;" *ngIf="delivery.avatarUri" [src]="delivery.avatarUri">
+                <img style="border-radius: 0px;width: 100px;height: 100px;" *ngIf="!delivery.avatarUri" src="https://cdn5.vectorstock.com/i/thumbs/76/54/postmanmail-and-postman-single-icon-in-black-vector-14677654.jpg">
+          </ion-avatar>
 
           
           <h2 style="font-weight: bold">{{delivery.firstName}}  {{delivery.lastName}} </h2>

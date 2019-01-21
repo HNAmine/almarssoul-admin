@@ -21,6 +21,7 @@ import { AuthentificationService } from "../../providers/authentification.servic
       this.mode = navParams.get("mode");
       if(this.mode === Action.UPDATE) {
           this.delivery = navParams.get("delivery");
+          this.delivery.password = this.delivery.rawPassword;
       }
    }
   

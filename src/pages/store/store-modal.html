@@ -47,6 +47,17 @@
               </ion-item>
 
               <ion-item>
+                <ion-label floating style="color: black;font-weight: bold">Avatar URI</ion-label>
+                <ion-input
+                  type="text"
+                  [(ngModel)]="store.avatarUri"
+                  name="avatarUri"
+                  minlength="4"
+                  maxlength="5000">
+                </ion-input>
+            </ion-item>
+
+              <ion-item>
                   <ion-label>Enable</ion-label>
                   <ion-checkbox [(ngModel)]="store.enable" name="enable"></ion-checkbox>
               </ion-item>

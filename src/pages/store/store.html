@@ -23,7 +23,7 @@
   <ion-list *ngFor="let store of stores">
       <ion-item [ngClass]="{'disable-store':!store.enable}" (click)="updateStore(store)">
         <ion-avatar item-start>
-          <img *ngIf="store.avatarUri" style="border-radius: 0px" [src]="store.avatarUri">
+          <img *ngIf="store.avatarUri" style="border-radius: 0px;width: 100px;height: 100px;" [src]="store.avatarUri">
         </ion-avatar>
         <h2 style="font-weight: bold">{{store.label}}</h2>
         <h3>{{store.description}}</h3>

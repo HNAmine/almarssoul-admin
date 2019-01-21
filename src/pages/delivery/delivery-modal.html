@@ -18,6 +18,7 @@
     </ion-toolbar>
   </ion-header>
 <ion-content>
+
        <form #form="ngForm">
           <ion-list no-lines padding-top>
 
@@ -76,12 +77,23 @@
                   </ion-input>
               </ion-item>
 
+              <ion-item>
+                    <ion-label floating style="color: black;font-weight: bold">Avatar URI</ion-label>
+                    <ion-input
+                      type="text"
+                      [(ngModel)]="delivery.avatarUri"
+                      name="avatarUri"
+                      minlength="4"
+                      maxlength="5000">
+                    </ion-input>
+                </ion-item>
+
           </ion-list>
 
           <button ion-button block round color="secondary" [disabled]="!form.valid" (click)="submit()">
-            <!-- <ng-container *ngIf="mode === 'UPDATE'">
+            <ng-container *ngIf="mode === 'UPDATE'">
                 Save
-            </ng-container> -->
+            </ng-container>
             <ng-container *ngIf="mode === 'ADD'">
                 Add
             </ng-container>
