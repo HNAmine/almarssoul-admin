@@ -21,6 +21,9 @@
 
     <ion-list *ngFor="let category of categories">
         <ion-item (click)="updateCategory(category)">
+          <ion-avatar item-start>
+            <img *ngIf="category.avatarUri" style="border-radius: 0px;width: 100px;height: 100px;" [src]="category.avatarUri">
+          </ion-avatar>
           <h2 style="font-weight: bold">{{category.label}} ( <ion-icon name="archive"></ion-icon> {{category.storeLabel}} )</h2>
           <h3>{{category.description}}</h3>
           <p>{{category.createdAt | date: 'MM/dd/yy'}}</p>

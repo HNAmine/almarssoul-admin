@@ -20,7 +20,7 @@ import { AuthentificationService } from "../../providers/authentification.servic
     private authentificationService: AuthentificationService) {
       this.mode = navParams.get("mode");
       if(this.mode === Action.UPDATE) {
-          this.delivery = navParams.get("delivery");
+          this.delivery = {...navParams.get("delivery")};
           this.delivery.password = this.delivery.rawPassword;
       }
    }
@@ -40,6 +40,22 @@ import { AuthentificationService } from "../../providers/authentification.servic
         loader.dismiss();
         const toast = this.toastCtrl.create({
           message: 'Delivery was added successfully',
+          duration: 3000
+        });
+        toast.present();
+        this.viewCtrl.dismiss({delivery, mode: this.mode});
+      }, (err)=> {
+        loader.dismiss();
+        // this.viewCtrl.dismiss();
+        throw err;
+      });
+    }
+
+    if(this.mode === Action.UPDATE){
+      this.authentificationService.updateDelivery(this.delivery).subscribe(delivery => {
+        loader.dismiss();
+        const toast = this.toastCtrl.create({
+          message: 'Delivery was updated successfully',
           duration: 3000
         });
         toast.present();

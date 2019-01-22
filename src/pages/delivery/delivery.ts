@@ -45,16 +45,16 @@ export class DeliveryPage {
   updateDelivery(delivery: User){
     let productModal = this.modalCtrl.create(DeliveryModal, { mode: Action.UPDATE , delivery });
     productModal.present();
-    // productModal.onDidDismiss(data => {
-    //   if(data.product && data.mode === Action.UPDATE){
-    //     for(let i = 0; i< this.products.length;i++){
-    //       if(this.products[i].id === data.product.id){
-    //         this.products[i] = data.product;
-    //         break;
-    //       }
-    //     }
-    //   }
-    // });
+    productModal.onDidDismiss(data => {
+      if(data && data.delivery && data.mode === Action.UPDATE){
+        for(let i = 0; i< this.deliveries.length;i++){
+          if(this.deliveries[i].id === data.delivery.id){
+            this.deliveries[i] = data.delivery;
+            break;
+          }
+        }
+      }
+    });
   }
 
   loadDelivery() {

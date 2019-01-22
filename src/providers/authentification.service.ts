@@ -44,6 +44,14 @@ export class AuthentificationService {
     });
   }
 
+  public updateDelivery(user: User): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', tokenPrefix + this.token);
+    return this._http.put(this.dns + 'delivery/update', user, {
+      headers
+    });
+  }
+
   public acceptInvitation(invited: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post(this.dns + 'accept-invitation', invited, {

@@ -22,7 +22,7 @@ import { ProductService } from "../../providers/product.service";
     private categoryService: CategoryService, private productService: ProductService) {
       this.mode = navParams.get("mode");
       if(this.mode === Action.UPDATE) {
-          this.product = navParams.get("product");
+          this.product = {...navParams.get("product")};
       }
       this.loadCategories();
    }

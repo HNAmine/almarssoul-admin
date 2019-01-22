@@ -23,7 +23,7 @@ import { Action } from "../../model/product.model";
           this.store.type = "DEFAULT";
       }
       if(this.mode === Action.UPDATE){
-          this.store = navParams.get("store");
+          this.store = {...navParams.get("store")};
       }
    }
   

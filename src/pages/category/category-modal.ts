@@ -23,7 +23,7 @@ import { StoreService } from "../../providers/store.service";
     private categoryService: CategoryService, private storeService: StoreService) {
       this.mode = navParams.get("mode");
       if(this.mode === Action.UPDATE) {
-          this.category = navParams.get("category");
+          this.category = {...navParams.get("category")};
       }
       this.loadStores();
    }
