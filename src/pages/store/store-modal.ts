@@ -48,6 +48,7 @@ import { Action } from "../../model/product.model";
         this.viewCtrl.dismiss({store, mode: this.mode});
       }, (err)=> {
         this.viewCtrl.dismiss();
+        loader.dismiss();
         throw err;
       });
     }
@@ -63,6 +64,7 @@ import { Action } from "../../model/product.model";
         this.viewCtrl.dismiss({store, mode: this.mode});
       }, (err)=> {
         this.viewCtrl.dismiss();
+        loader.dismiss();
         throw err;
       });
     }

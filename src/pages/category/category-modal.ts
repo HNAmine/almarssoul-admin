@@ -63,6 +63,7 @@ import { StoreService } from "../../providers/store.service";
         toast.present();
         this.viewCtrl.dismiss({category, mode: this.mode});
       }, (err)=> {
+        loader.dismiss();
         this.viewCtrl.dismiss();
         throw err;
       });
