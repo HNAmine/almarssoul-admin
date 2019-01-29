@@ -20,12 +20,13 @@
 <ion-content>
        <form #form="ngForm">
           <ion-list no-lines padding-top>
+
               <ion-item>
-                  <ion-label floating style="color: black;font-weight: bold">Label <span class="required">(*)</span></ion-label>
+                  <ion-label floating style="color: black;font-weight: bold">Label AR <span class="required">(*)</span></ion-label>
                   <ion-input
                     type="text"
-                    [(ngModel)]="product.label"
-                    name="label"
+                    [(ngModel)]="product.labelAr"
+                    name="labelAr"
                     minlength="2"
                     maxlength="255"
                     required>
@@ -33,11 +34,34 @@
               </ion-item>
 
               <ion-item>
-                  <ion-label floating style="color: black;font-weight: bold">Description</ion-label>
+                  <ion-label floating style="color: black;font-weight: bold">Description AR </ion-label>
                   <ion-input
                     type="text"
-                    [(ngModel)]="product.description"
-                    name="description"
+                    [(ngModel)]="product.descriptionAr"
+                    name="descriptionAr"
+                    minlength="4"
+                    maxlength="50">
+                  </ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Label FR <span class="required">(*)</span></ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="product.labelFr"
+                    name="labelFr"
+                    minlength="2"
+                    maxlength="255"
+                    required>
+                  </ion-input>  
+              </ion-item>
+
+              <ion-item>
+                  <ion-label floating style="color: black;font-weight: bold">Description FR </ion-label>
+                  <ion-input
+                    type="text"
+                    [(ngModel)]="product.descriptionFr"
+                    name="descriptionFr"
                     minlength="4"
                     maxlength="50">
                   </ion-input>

@@ -68,16 +68,13 @@
 
     <ion-list>
         <ion-item *ngFor="let product of basket.products">
-          <ion-avatar item-start>
-            <img style="border-radius: 0px !important" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/766/low-calorie-fruit-1516368847.jpg?resize=768:*">
-          </ion-avatar>
-          <h2 style="font-weight: bold">{{product.productLabel}}</h2>
-          <h3 style="font-weight: bold" *ngIf="product.productDescription">({{product.productDescription}})</h3>
-          <p style="font-weight: bold;color: black">({{product.categoryLabel}}) ({{product.storeLabel}}) {{product.quantity}} elements</p>
+          <h2 style="font-weight: bold">{{product.productLabelAr}} {{product.productLabelFr}}</h2>
+          <h3 style="font-weight: bold" *ngIf="product.productDescriptionAr">({{product.productDescriptionAr}})</h3>
+          <h3 style="font-weight: bold" *ngIf="product.productDescriptionFr">({{product.productDescriptionFr}})</h3>
+          <p style="font-weight: bold;color: black">({{product.categoryLabelAr}} {{product.categoryLabelFr}}) ({{product.storeLabelAr}} {{product.storeLabelFr}}) {{product.quantity}} elements</p>
           <p style="font-weight: bold;color: black">{{product.productCost}} um/Kg</p>
         </ion-item>
       </ion-list>
-
 
   </ion-card>
 

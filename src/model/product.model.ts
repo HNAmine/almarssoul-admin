@@ -83,10 +83,14 @@ export class BasketDetails {
 
 export class ProductDetails{
   productId?: number;
-  productLabel?: string;
-  productDescription?: string;
-	categoryLabel?: string;
-	storeLabel?: string;
+  productLabelAr?: string;
+  productLabelFr?: string;
+  productDescriptionAr?: string;
+  productDescriptionFr?: string;
+	categoryLabelAr?: string;
+	categoryLabelFr?: string;
+	storeLabelAr?: string;
+	storeLabelFr?: string;
 	productCost?: number;
 	quantity?: number;
 }

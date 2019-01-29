@@ -63,7 +63,7 @@ export class StorePage {
     let storeModal = this.modalCtrl.create(StoreModal, { mode: Action.ADD });
     storeModal.present();
     storeModal.onDidDismiss(data => {
-      if(data.store && data.mode === Action.ADD){
+      if(data && data.store && data.mode === Action.ADD){
         this.stores.push(data.store);
       }
     });
@@ -73,7 +73,7 @@ export class StorePage {
     let storeModal = this.modalCtrl.create(StoreModal, { mode: Action.UPDATE, store });
     storeModal.present();
     storeModal.onDidDismiss(data => {
-      if(data.store && data.mode === Action.UPDATE){
+      if(data && data.store && data.mode === Action.UPDATE){
         for(let i = 0; i< this.stores.length;i++){
           if(this.stores[i].id === data.store.id){
             this.stores[i] = data.store;

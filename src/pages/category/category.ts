@@ -37,7 +37,7 @@ export class CategoryPage {
     let categoryModal = this.modalCtrl.create(CategoryModal, { mode: Action.ADD });
     categoryModal.present();
     categoryModal.onDidDismiss(data => {
-      if(data.category && data.mode === Action.ADD){
+      if(data && data.category && data.mode === Action.ADD){
         this.categories.push(data.category);
       }
     });
@@ -47,7 +47,7 @@ export class CategoryPage {
     let categoryModal = this.modalCtrl.create(CategoryModal, { mode: Action.UPDATE , category });
     categoryModal.present();
     categoryModal.onDidDismiss(data => {
-      if(data.category && data.mode === Action.UPDATE){
+      if(data && data.category && data.mode === Action.UPDATE){
         for(let i = 0; i< this.categories.length;i++){
           if(this.categories[i].id === data.category.id){
             this.categories[i] = data.category;
@@ -57,6 +57,7 @@ export class CategoryPage {
       }
     });
   }
+
 
   loadCategories() {
     let loader = this.loadingCtrl.create({

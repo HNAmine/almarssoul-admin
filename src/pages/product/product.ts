@@ -36,7 +36,7 @@ export class ProductPage {
     let productModal = this.modalCtrl.create(ProductModal, { mode: Action.ADD });
     productModal.present();
     productModal.onDidDismiss(data => {
-      if(data.product && data.mode === Action.ADD){
+      if(data && data.product && data.mode === Action.ADD){
         this.products.push(data.product);
       }
     });
@@ -46,7 +46,7 @@ export class ProductPage {
     let productModal = this.modalCtrl.create(ProductModal, { mode: Action.UPDATE , product });
     productModal.present();
     productModal.onDidDismiss(data => {
-      if(data.product && data.mode === Action.UPDATE){
+      if(data && data.product && data.mode === Action.UPDATE){
         for(let i = 0; i< this.products.length;i++){
           if(this.products[i].id === data.product.id){
             this.products[i] = data.product;
