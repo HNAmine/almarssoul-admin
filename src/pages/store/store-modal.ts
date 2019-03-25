@@ -11,7 +11,7 @@ import { Action } from "../../model/product.model";
   export class StoreModal {
   
    mode = "ADD";
-   store: Store = {avatarUri :'https://cdn.icon-icons.com/icons2/567/PNG/512/store_icon-icons.com_54371.png'};
+   store: Store = {avatarUri :'https://ik.imagekit.io/i3h9a5q3yu2o1/store_H1_WS-gr4.png'};
    token = null;
 
    constructor( navParams: NavParams, public viewCtrl: ViewController,
