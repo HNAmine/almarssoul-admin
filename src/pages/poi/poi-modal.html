@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Closest position
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ closestPosition.label }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img [src]="closestPosition.avatarUri" alt="" />
+      {{ closestPosition.distance }} metre of {{ closestPosition.label }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

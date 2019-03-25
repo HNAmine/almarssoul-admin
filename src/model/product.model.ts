@@ -57,7 +57,8 @@ export class PointInterest{
 	label?: string;
 	lat?: number;
 	lng?: number;
-	distance?: number;
+  distance?: number;
+  avatarUri?: string;
 }
 
 export class BasketDetails {
