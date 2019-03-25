@@ -1,6 +1,8 @@
 <ion-header>
   <ion-navbar no-border-bottom hideBackButton="true">
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title> AL MARSSOUL </ion-title>
     <p style="font-size: 12px;color: black;font-weight: bold;">A plus tôt au lieux actuel</p>
   </ion-navbar>
@@ -9,37 +11,50 @@
 <ion-content class="card-background-page">
 
 
-  <h6 style="text-align: center;font-weight: bold;color: orange;" *ngIf="baskets && baskets.length == 0"><ion-icon name="ios-warning-outline"></ion-icon> there is no basket to delivery</h6>
+  <h6 style="text-align: center;font-weight: bold;color: orange;" *ngIf="baskets && baskets.length == 0">
+    <ion-icon name="ios-warning-outline"></ion-icon> there is no basket to delivery
+  </h6>
 
-  <ion-card *ngFor="let basket of baskets" [ngClass]="{'inprogress':basket.state == 'INPROGRESS'}">
+  <ion-card *ngFor="let basket of baskets" [ngClass]="{'inprogress':basket.state == 'INPROGRESS'}" (click)="goToBasketDetail(basket)">
 
     <ion-item>
       <ion-avatar item-start>
-          <ion-icon name="ios-more"></ion-icon>
+        <ion-icon name="ios-more"></ion-icon>
       </ion-avatar>
-      <h2 style="font-weight: bold">{{basket?.ownerFirstName}} {{basket?.ownerLastName}} <ion-icon *ngIf="basket.phone" name="md-call" class="call" (click)="callOwner(basket.phone)"></ion-icon></h2>
+      <h2 style="font-weight: bold">{{basket?.ownerFirstName}} {{basket?.ownerLastName}} <ion-icon *ngIf="basket.phone"
+          name="md-call" class="call" (click)="callOwner(basket.phone)"></ion-icon>
+      </h2>
       <p>{{basket?.phone}}</p>
     </ion-item>
-    
+
     <ion-item *ngIf="basket.deliveryFirstName && authentificationService.adminConnected" style="background: gainsboro;">
       <ion-avatar item-start>
-          <ion-icon name="ios-more"></ion-icon>
+        <ion-icon name="ios-more"></ion-icon>
       </ion-avatar>
-      <h2 style="font-weight: bold">{{basket?.deliveryFirstName}} {{basket?.deliveryLastName}} <ion-icon *ngIf="basket.deliveryPhone" name="md-call" class="call" (click)="callOwner(basket.deliveryPhone)"></ion-icon>
+      <h2 style="font-weight: bold">{{basket?.deliveryFirstName}} {{basket?.deliveryLastName}} <ion-icon
+          *ngIf="basket.deliveryPhone" name="md-call" class="call" (click)="callOwner(basket.deliveryPhone)"></ion-icon>
       </h2>
       <p>{{basket?.deliveryPhone}}</p>
     </ion-item>
-  
-    <ion-card-content (click)="goToBasketDetail(basket)">
 
-      <h4 style="font-weight: bold"><ion-icon name="pin"></ion-icon> Closest positions</h4>
-      <p *ngFor="let closestPosition of basket.closestPositions" style="font-weight: bold">{{closestPosition.distance}} metre of {{closestPosition.label}} <br></p>
+    <ion-card-content>
 
-      <p (click)="showInMap(basket)"><ion-icon name="locate"></ion-icon> {{basket.lat}}, {{basket.lng}}</p>
+      <!-- <h4 style="font-weight: bold">
+        <ion-icon name="pin"></ion-icon> Closest positions
+      </h4> -->
 
-      <h5 style="float: right;font-weight: bold" class="w3-badge w3-green">{{basket.totalCost}} + {{basket.deliveryCost}} = {{basket.totalCost + basket.deliveryCost}} DH</h5>
+      <!-- <p *ngFor="let closestPosition of basket.closestPositions" style="font-weight: bold">{{closestPosition.distance}}
+        metre of {{closestPosition.label}} <br>
+      </p> -->
+
+      <!-- <p (click)="showInMap(basket)">
+        <ion-icon name="locate"></ion-icon> {{basket.lat}}, {{basket.lng}}
+      </p> -->
+
+      <h5 style="float: right;font-weight: bold" class="w3-badge w3-green">{{basket.totalCost}} +
+        {{basket.deliveryCost}} = {{basket.totalCost + basket.deliveryCost}} DH</h5>
     </ion-card-content>
-  
+
   </ion-card>
 
 </ion-content>

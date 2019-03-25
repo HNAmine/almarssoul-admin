@@ -1,6 +1,8 @@
 <ion-header>
   <ion-navbar no-border-bottom hideBackButton="false">
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title> AL MARSSOUL </ion-title>
     <p style="font-size: 12px;color: black;font-weight: bold;">A plus tôt au lieux actuel</p>
   </ion-navbar>
@@ -12,50 +14,69 @@
 
     <ion-item>
       <ion-avatar item-start>
-          <ion-icon name="ios-more"></ion-icon>
+        <ion-icon name="ios-more"></ion-icon>
       </ion-avatar>
-      <h2 style="font-weight: bold">{{basket?.ownerFirstName}} {{basket?.ownerLastName}} <ion-icon *ngIf="basket.phone" name="md-call" class="call" (click)="callOwner(basket.phone)"></ion-icon>
+      <h2 style="font-weight: bold">{{basket?.ownerFirstName}} {{basket?.ownerLastName}} <ion-icon *ngIf="basket.phone"
+          name="md-call" class="call" (click)="callOwner(basket.phone)"></ion-icon>
       </h2>
       <p>{{basket?.phone}}</p>
     </ion-item>
 
     <ion-item *ngIf="basket.deliveryFirstName && authentificationService.adminConnected" style="background: gainsboro;">
       <ion-avatar item-start>
-          <ion-icon name="ios-more"></ion-icon>
+        <ion-icon name="ios-more"></ion-icon>
       </ion-avatar>
-      <h2 style="font-weight: bold">{{basket?.deliveryFirstName}} {{basket?.deliveryLastName}} <ion-icon *ngIf="basket.deliveryPhone" name="md-call" class="call" (click)="callOwner(basket.deliveryPhone)"></ion-icon>
+      <h2 style="font-weight: bold">{{basket?.deliveryFirstName}} {{basket?.deliveryLastName}} <ion-icon
+          *ngIf="basket.deliveryPhone" name="md-call" class="call" (click)="callOwner(basket.deliveryPhone)"></ion-icon>
       </h2>
       <p>{{basket?.deliveryPhone}}</p>
     </ion-item>
 
     <ion-card-content>
 
-      <h4 style="font-weight: bold"><ion-icon name="pin"></ion-icon> Closest positions</h4>
-      <p *ngFor="let closestPosition of basket.closestPositions" style="font-weight: bold">
-        {{closestPosition.distance}} metre of {{closestPosition.label}} <ion-icon (click)="showPOI(closestPosition)" name="md-eye"></ion-icon> <br>
+      <h4 *ngIf="basket.closestPositions && basket.closestPositions.length > 0" style="font-weight: bold">
+        <ion-icon name="pin"></ion-icon> Sector of livraison
+      </h4>
 
+      <img *ngIf="basket.closestPositions && basket.closestPositions.length > 0"
+        [src]="basket.closestPositions[0].avatarUri" alt="" />
+
+      <h4 style="font-weight: bold">
+        <ion-icon name="pin"></ion-icon> Closest positions
+      </h4>
+
+      <p *ngFor="let closestPosition of basket.closestPositions" style="font-weight: bold">
+        {{closestPosition.distance}} metre of {{closestPosition.label}}
+        <!-- <ion-icon (click)="showPOI(closestPosition)" name="md-eye"></ion-icon> -->
+        <br>
       </p>
 
-      <p (click)="showInMap(basket)"><ion-icon name="locate"></ion-icon> {{basket.lat}}, {{basket.lng}}</p>
+      <p (click)="showInMap(basket)">
+        <ion-icon name="locate"></ion-icon> {{basket.lat}}, {{basket.lng}}
+      </p>
 
-      <h5 style="float: right;font-weight: bold" class="w3-badge w3-green">{{basket.totalCost}} + {{basket.deliveryCost}} = {{basket.totalCost + basket.deliveryCost}} DH</h5>
+      <h5 style="float: right;font-weight: bold" class="w3-badge w3-green">{{basket.totalCost}} +
+        {{basket.deliveryCost}} = {{basket.totalCost + basket.deliveryCost}} DH</h5>
     </ion-card-content>
     <br>
     <br>
 
     <ion-row>
       <ion-col *ngIf="basket.state !== 'INPROGRESS'">
-        <button (click)="confirmChangeState('INPROGRESS')" ion-button icon-start clear small style="background-color: #00abec;color: white">
+        <button (click)="confirmChangeState('INPROGRESS')" ion-button icon-start clear small
+          style="background-color: #00abec;color: white">
           <div>In progress</div>
         </button>
       </ion-col>
       <ion-col>
-        <button (click)="confirmChangeState('COMPLETED')" ion-button icon-start clear small style="background-color: green;color: white">
+        <button (click)="confirmChangeState('COMPLETED')" ion-button icon-start clear small
+          style="background-color: green;color: white">
           <div>Completed</div>
         </button>
       </ion-col>
       <ion-col *ngIf="authentificationService.adminConnected">
-        <button (click)="confirmChangeState('CANCELLED')" ion-button icon-start clear small style="background-color: brown;color: white">
+        <button (click)="confirmChangeState('CANCELLED')" ion-button icon-start clear small
+          style="background-color: brown;color: white">
           <div>Concelled</div>
         </button>
       </ion-col>
@@ -63,21 +84,23 @@
 
     <ion-row *ngIf="authentificationService.adminConnected">
       <ion-col>
-        <button (click)="assignDelivery()" ion-button icon-start clear small style="background-color: orangered;color: white">
+        <button (click)="assignDelivery()" ion-button icon-start clear small
+          style="background-color: orangered;color: white">
           <div>Assign delivery</div>
         </button>
       </ion-col>
     </ion-row>
 
     <ion-list>
-        <ion-item *ngFor="let product of basket.products">
-          <h2 style="font-weight: bold">{{product.productLabelAr}} {{product.productLabelFr}}</h2>
-          <h3 style="font-weight: bold" *ngIf="product.productDescriptionAr">({{product.productDescriptionAr}})</h3>
-          <h3 style="font-weight: bold" *ngIf="product.productDescriptionFr">({{product.productDescriptionFr}})</h3>
-          <p style="font-weight: bold;color: black">({{product.categoryLabelAr}} {{product.categoryLabelFr}}) ({{product.storeLabelAr}} {{product.storeLabelFr}}) {{product.quantity}} elements</p>
-          <p style="font-weight: bold;color: black">{{product.productCost}} um/Kg</p>
-        </ion-item>
-      </ion-list>
+      <div *ngFor="let product of basket.products">
+        <h2 style="font-weight: bold">{{product.productLabelAr}} {{product.productLabelFr}}</h2>
+        <h3 style="font-weight: bold" *ngIf="product.productDescriptionAr">({{product.productDescriptionAr}})</h3>
+        <h3 style="font-weight: bold" *ngIf="product.productDescriptionFr">({{product.productDescriptionFr}})</h3>
+        <p style="font-weight: bold;color: black">({{product.categoryLabelAr}} {{product.categoryLabelFr}})
+          ({{product.storeLabelAr}} {{product.storeLabelFr}}) {{product.quantity}} elements</p>
+        <p style="font-weight: bold;color: black">{{product.productCost}} um/Kg</p>
+      </div>
+    </ion-list>
 
   </ion-card>
 

@@ -24,7 +24,8 @@
           <ion-avatar item-start>
             <img *ngIf="category.avatarUri" style="border-radius: 0px;width: 100px;height: 100px;" [src]="category.avatarUri">
           </ion-avatar>
-          <h2 style="font-weight: bold">{{category.labelAr}} {{category.labelFr}}( <ion-icon name="archive"></ion-icon> {{category.storeLabel}} )</h2>
+          <h2 style="font-weight: bold">{{category.labelAr}} {{category.labelFr}}</h2>
+          <h2 style="font-weight: bold">(<ion-icon name="archive"></ion-icon> {{category.storeLabel}})</h2>
           <h3>{{category.descriptionFr}}</h3>
           <h3>{{category.descriptionAr}}</h3>
           <p>{{category.createdAt | date: 'MM/dd/yy'}}</p>

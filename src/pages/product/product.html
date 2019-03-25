@@ -21,7 +21,8 @@
 
     <ion-list *ngFor="let product of products">
         <ion-item (click)="updateProduct(product)">
-          <h2 style="font-weight: bold">{{product.labelAr}} {{product.labelFr}} ( <ion-icon name="md-cube"></ion-icon> {{product.categoryLabel}} )</h2>
+          <h2 style="font-weight: bold">{{product.labelAr}} {{product.labelFr}}</h2>
+          <h2 style="font-weight: bold">(<ion-icon name="md-cube"></ion-icon> {{product.categoryLabel}})</h2>
           <h3>{{product.descriptionFr}}</h3>
           <h3>{{product.descriptionAr}}</h3>
           <p>{{product.createdAt | date: 'MM/dd/yy'}}</p>
