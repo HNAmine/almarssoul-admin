@@ -10,12 +10,16 @@
 
 <ion-content class="card-background-page">
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <h6 style="text-align: center;font-weight: bold;color: orange;" *ngIf="baskets && baskets.length == 0">
     <ion-icon name="ios-warning-outline"></ion-icon> there is no basket to delivery
   </h6>
 
-  <ion-card *ngFor="let basket of baskets" [ngClass]="{'inprogress':basket.state == 'INPROGRESS'}" (click)="goToBasketDetail(basket)">
+  <ion-card *ngFor="let basket of baskets" [ngClass]="{'inprogress':basket.state == 'INPROGRESS'}"
+    (click)="goToBasketDetail(basket)">
 
     <ion-item>
       <ion-avatar item-start>

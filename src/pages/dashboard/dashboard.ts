@@ -34,10 +34,10 @@ export class Dashboard {
   }
 
   ionViewDidLoad() {
-      this.loadBasketToDelivery();
+      this.loadBasketToDelivery(null);
   }
 
-  loadBasketToDelivery(){
+  loadBasketToDelivery(refresher = null){
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
@@ -47,9 +47,15 @@ export class Dashboard {
       this.baskets = baskets;
       loader.dismiss();
       this.loading = false;
+      if(refresher) {
+        refresher.complete();
+      }
     }, () => {
         loader.dismiss();
         this.loading = false;
+        if(refresher) {
+          refresher.complete();
+        }
     });
   }
 
@@ -75,5 +81,9 @@ export class Dashboard {
     this.callNumber.callNumber(phone, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
+  }
+
+  doRefresh(refresher) {
+    this.loadBasketToDelivery(refresher)
   }
 }

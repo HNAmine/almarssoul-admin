@@ -46,7 +46,8 @@
       </h4>
 
       <p *ngFor="let closestPosition of basket.closestPositions" style="font-weight: bold">
-        {{closestPosition.distance}} metre of {{closestPosition.label}}
+        {{closestPosition.distance}} metre of <span
+          style="color: green;text-decoration: underline;">{{closestPosition.label}}</span>
         <!-- <ion-icon (click)="showPOI(closestPosition)" name="md-eye"></ion-icon> -->
         <br>
       </p>
